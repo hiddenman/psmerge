@@ -1,0 +1,67 @@
+<html><head><META HTTP-EQUIV="content-type" CONTENT="text/html; charset=windows-1251"><title>Google Groups: видеть нить</title></head><body bgcolor=#ffffff onload="window.focus();"><table bgcolor=#ffcc33 border=0 cellPadding=2 width=100%><tr><td bgcolor=#ffcc33><font face="">Все сообщения из нити</font></td></tr></table>
+<a name="link1"></a>
+<a name="s"></a>
+
+<table width=100% bgcolor=#e0e0e0 cellpadding=2 cellspacing=0 border=0><tr><td><font face="">
+
+<table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face="">Message 1 in thread</font></td></tr></table>
+От:<a href=/groups?hl=ru&q=author:dove%40mailcity.com+ target=_top>dove</a> (<a href=mailto:dove%40mailcity.com>dove@mailcity.com</a>)<br>Заголовок:How to merge two Postscript files? <br>Группы новостей:<a href=/groups?hl=ru&group=comp.lang.postscript target=_top>comp.lang.postscript</a><br><table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face=""><a href=/groups?hl=ru&selm=37EDAEB0.303DCA38%40mailcity.com target=_top>View this article only</a></font></td></tr></table>
+Число:1999/09/26 <br></font></td></tr></table><pre>Hi,
+
+Is there any way can merge two Postscript files in unix platform? If
+not, can I merge a ASCII file to a Postscript file?
+
+Regards.</pre> 
+<a name="link2"></a>
+
+<table width=100% bgcolor=#e0e0e0 cellpadding=2 cellspacing=0 border=0><tr><td><font face="">
+
+<table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face="">Message 2 in thread</font></td></tr></table>
+От:<a href=/groups?hl=ru&q=author:H.Blischke%40srz-berlin.de+ target=_top>Helge Blischke</a> (<a href=mailto:H.Blischke%40srz-berlin.de>H.Blischke@srz-berlin.de</a>)<br>Заголовок:Re: How to merge two Postscript files? <br>Группы новостей:<a href=/groups?hl=ru&group=comp.lang.postscript target=_top>comp.lang.postscript</a><br><table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face=""><a href=/groups?hl=ru&selm=37EFFCA2.420A%40srz-berlin.de target=_top>View this article only</a></font></td></tr></table>
+Число:1999/09/28 <br></font></td></tr></table><pre>dove wrote:
+<font color="#660066">&gt; 
+&gt; Hi,
+&gt; 
+&gt; Is there any way can merge two Postscript files in unix platform? If
+&gt; not, can I merge a ASCII file to a Postscript file?
+&gt; 
+&gt; Regards.</font>
+Though I posted this about a dozen times already, here is the trick
+once more:
+
+%!PS
+/job_save save def
+% 1st ps file goes here
+job_save restore
+
+... and so on. This will work except for very weird PostScript jobs.
+
+Helge
+<font color="#007777">-- 
+H.Blischke@srz-berlin.de
+H.Blischke@srz-berlin.com
+H.Blischke@acm.org
+</font></pre> 
+<a name="link3"></a>
+
+<table width=100% bgcolor=#e0e0e0 cellpadding=2 cellspacing=0 border=0><tr><td><font face="">
+
+<table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face="">Message 3 in thread</font></td></tr></table>
+От:<a href=/groups?hl=ru&q=author:dove%40mailcity.com+ target=_top>dove</a> (<a href=mailto:dove%40mailcity.com>dove@mailcity.com</a>)<br>Заголовок:Re: How to merge two Postscript files? <br>Группы новостей:<a href=/groups?hl=ru&group=comp.lang.postscript target=_top>comp.lang.postscript</a><br><table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face=""><a href=/groups?hl=ru&selm=37F334FF.25F9FAA5%40mailcity.com target=_top>View this article only</a></font></td></tr></table>
+Число:1999/09/30 <br></font></td></tr></table><pre>Hi Helge,
+
+Thank you for your reply. I am sorry that I am a beginner of Postscript
+language. Can you explain in more details about the following statments?
+
+%!PS
+/job_save save def
+% 1st ps file goes here
+job_save restore
+
+... and so on. This will work except for very weird PostScript jobs.
+
+Thanks a lot.
+
+
+<font color="#660066">&gt;</font></pre> 
+<table border=0 width=100% cellpadding=0 cellspacing=0><tr><td bgcolor=#ffcc33><img height=3 alt="" src="/images/cleardot.gif"></td></tr></table><br><center><font size=-1>&copy;2002 Google</font></center></body></html>

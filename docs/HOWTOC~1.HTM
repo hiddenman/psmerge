@@ -1,0 +1,139 @@
+<HTML>		<HEAD>		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">		<meta name="Copyright" content="Copyright 2001 Apple Computer, Inc. All Rights Reserved.">        <title>Creating a Localized PPD File</title>		</HEAD>	<BODY bgcolor="#ffffff"><!-- start of header --><!-- googleoff: index -->
+<!-- Preload Script (smnavbar) -->
+<script language="JavaScript">
+<!--
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		smnavbar_02_over = newImage("/sm_navbar/smnavbar_02_over.gif");
+		smnavbar_03_over = newImage("/sm_navbar/smnavbar_03_over.gif");
+		smnavbar_04_over = newImage("/sm_navbar/smnavbar_04_over.gif");
+		smnavbar_06_over = newImage("/sm_navbar/smnavbar_06_over.gif");
+		smnavbar_07_over = newImage("/sm_navbar/smnavbar_07_over.gif");
+		preloadFlag = true;
+	}
+}
+//Set lengths for Search field
+if(navigator.appName == "Netscape"){
+   TextAreaSize = 20;
+}
+else{
+   TextAreaSize = 20;
+}
+var textfield = "<input type='text' name='Search' size='"+TextAreaSize+"'>";
+preloadImages();
+// -->
+</SCRIPT>
+	<form name="MidSearch" method="post" action="http://developer.apple.com/cgi-bin/simpsearch.pl">
+
+<!-- Slices (smnavbar) -->
+<table width="500" border="0" cellpadding="0" cellspacing="0" background="/sm_navbar/navbg.gif">
+	<tr>
+		<td>
+			<a href="http://www.apple.com/developer/" target="_top">
+				<img src="/sm_navbar/smnavbar_01.gif" width=86 height=32 border=0 alt="ADC"></a></td>
+		<td>
+			<a href="http://developer.apple.com/membership/" target="_top"
+			   onmouseover="changeImages('smnavbar_02', '/sm_navbar/smnavbar_02_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_02', '/sm_navbar/smnavbar_02.gif'); return true;">
+				<img name="smnavbar_02" src="/sm_navbar/smnavbar_02.gif" width=82 height=32 border=0 alt="Membership"></a></td>
+		<td>
+			<a href="http://developer.apple.com/technical/" target="_top"
+			   onmouseover="changeImages('smnavbar_03', '/sm_navbar/smnavbar_03_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_03', '/sm_navbar/smnavbar_03.gif'); return true;">
+				<img name="smnavbar_03" src="/sm_navbar/smnavbar_03.gif" width=66 height=32 border=0 alt="Technical"></a></td>
+		<td>
+			<a href="http://developer.apple.com/business/" target="_top"
+			   onmouseover="changeImages('smnavbar_04', '/sm_navbar/smnavbar_04_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_04', '/sm_navbar/smnavbar_04.gif'); return true;">
+				<img name="smnavbar_04" src="/sm_navbar/smnavbar_04.gif" width=68 height=32 border=0 alt="Business"></a></td>
+		<TD valign="top">
+		<center>
+<table width="122" border="0" cellpadding="3.5" cellspacing="0">				
+<tr>
+<td width="21" align="center" valign="middle">		
+<script>
+<!--
+document.write(textfield);
+//--><input type='text' name='Search' size='14'>
+</script>
+</td>
+</tr>
+</table>
+</center>
+		</TD>
+		<td>
+			<a href="JavaScript:document.MidSearch.submit()"
+			   onmouseover="changeImages('smnavbar_06', '/sm_navbar/smnavbar_06_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_06', '/sm_navbar/smnavbar_06.gif'); return true;">
+				<img name="smnavbar_06" src="/sm_navbar/smnavbar_06.gif" width=51 height=32 border=0 alt="Search"></a></td>
+		<td>
+			<a href="http://developer.apple.com/search/" target="_top"
+			   onmouseover="changeImages('smnavbar_07', '/sm_navbar/smnavbar_07_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_07', '/sm_navbar/smnavbar_07.gif'); return true;">
+				<img name="smnavbar_07" src="/sm_navbar/smnavbar_07.gif" width=73 height=32 border=0 alt="Advanced Search"></a></td>
+	</tr>
+</table>
+</form>
+<!-- googleon: index --><!-- end of header --><!-- start of path --><font face="Geneva,Helvetica,Arial" size="1"><b>PATH<spacer type="horizontal" size="5">&nbsp;</b><a href="../../../../../../index.html" target="_top">Documentation</a><b>&gt;         </b></font><a href="../../../../coretechnologies.html" target="_top"><font face="Geneva,Helvetica,Arial" size="1">Core         Technologies</font></a></font><br>      <br><!-- end of path --><a href="Installing_PPD_Files_.html" target="_right"><img src="../images/previous.gif" border="0"></a><a href="Specifying__atures_Pane.html" target="_right"><img src="../images/next.gif" border="0"></a>&nbsp;<br><!-- apple_doc: pageHeadingStart --><a name = "CJBEAJBI"></a><h2><font face="Lucida Grande,Helvetica,Arial">Creating a Localized PPD File</font></h2><!-- apple_doc: pageHeadingEnd --><p>There are two things you need to do to create a localizedversion of a PPD file:</p><ul><li>specify thecharacter encoding and language</font></li><li>translate strings that are displayed in the user interface</font></li></ul><p>One value you do not need to localize is <code>*DefaultPageSize</code>,as Mac OS X does not use this value. The printing system sets adefault paper size across a user's set of printers, rather thanon a printer by printer basis.</p><br><a name = "TPXREF107"></a><h3><font face="Lucida Grande,Helvetica,Arial">Specifying the Encoding andLanguage</font></h3><p>You need to specify the encoding and language in the PPD fileby using the <code>*LanguageEncoding</code> and <code>*LanguageVersion</code> keywords.The encoding is used by the system to convert text strings fromthe encoding used in the PPD file to that currently in use on the computer.The conversion is done when the printer queue is created, usingthe language of the user at that time.</p><p>For most Roman languages, the supported <code>encodingOption</code> valuefor the <code>*LanguageEncoding</code> keywordis <code>ISOLatin1</code>. The mostcommon encodings are listed in  <a href="#BBCGGIGA">Table 3-2</a>. For more informationsee <i>PostScript Printer Description File Format Specification</i>.If you specify an encoding that Apple doesn't support, MacRomanis used.</p><br><table border = "1"><a name = "BBCGGIGA"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Table3-2 Encoding option values</font></b></p><br><b><font face="Geneva,Helvetica,Arial" size="1"><tr><td>Values</td><td>Encoding</td></tr></b></font><tr><td><code>ISOLatin1</code></td><td>Uses the ISOLatin1 encoding</td></tr><tr><td><code>MacStandard</code></td><td>Uses Macintosh standard encoding</td></tr><tr><td><code>JIS83-RKSJ</code></td><td>Uses RKSJ (also known as Shift&#150;JIS) encoding and theJIS X0208-1983 character set</td></tr><tr><td><code>UTF-8</code></td><td>Uses a form of Unicode character encoding</td></tr></table><br><p>The <code>languageOption</code> valuefor the <code>*LanguageVersion</code> keywordshould identify the language used in the PPD file. The encodingapplies only to the translation strings, human-readable comments,and certain other values, such as the value for the optional keyword <code>*NickName</code>. Formore information, see <i>PostScript Printer Description FileFormat Specification</i>.</p><br><a name = "TPXREF108"></a><h3><font face="Lucida Grande,Helvetica,Arial">Translating Strings Used inthe User Interface</font></h3><p>You should provide translations for any keywords, options,and messages that appear in the interface. The <i>PostScriptPrinter Description File Format Specification</i> describesthe translation string syntax in detail. Although translation stringsare optional according to the specification, you need to providethem to assure a good user experience for your worldwide customers.</p><p>A translation string must begin with a slash (/) and end witha colon (:) or a newline character, depending on the item for whichit is a translation. The string appears after the option or messagefor which it is a translation. </p><p> <a href="#BCICFJEE">Listing 3-1</a> is an excerpt from a PPD file that's localizedfor German. It shows the encoding string along with the items thatneed to be localized for a tray switching feature. An explanationfor each numbered line follows the listing. </p><a name = "BCICFJEE"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Listing3-1 An excerpt from a PPD file that'slocalized for German</font></b></p><pre>*LanguageEncoding: ISOLatin1                                            //1*OpenUI *TraySwitch/Zufuhrumschaltung:  Boolean                         //2*OrderDependency: 20 AnySetup *TraySwitch*DefaultTraySwitch: False                                               //3*TraySwitch True/Ein: "1 dict dup /TraySwitch true put setpagedevice"   //4*TraySwitch False/Aus: "1 dict dup /TraySwitch false put setpagedevice" //5*?TraySwitch: "                                                         //6   save   currentpagedevice /TraySwitch get   {(True)}{(False)}ifelse = flush   restore"*End*CloseUI: *TraySwitch</pre><p>Here are the explanations for the numbered lines in  <a href="#BCICFJEE">Listing 3-1</a>:</p><ol><li>The languageencoding is required. For German, it is <code>ISOLatin1</code>.</font></li><li>For the German version, Zufuhrumschaltung appears in the userinterface instead of Tray Switching. Note the syntax&#151;the translationstring is delimited by a slash and a colon. It is then followedby the <code>*OpenUI</code> option <code>Boolean</code>.</font></li><li>You do not need to provide a translation for a keyword'sdefault value. </font></li><li><code>/Ein</code> is the translationstring for True, and it is followed by the PostScript code to invoke thatoption.</font></li><li><code>/Aus</code> is the translationstring for False, and it is followed by the PostScript code to invokethat option.</font></li><li>The PostScript invocation or query code must not be translated.</font></li></ol><br><a name = "TPXREF105"></a><h3><font face="Lucida Grande,Helvetica,Arial">Providing PPD Files for LanguagesNot Listed in International Preferences</font></h3><p>When a print queue is created by a user, Mac OS X selectsthe localized version of a PPD file based on the user's preferredlanguages listed in the International pane of System Preferences.After Mac OS X finds the required PPD file in the <code>en.lproj</code> folder,it looks for an <code>.lproj</code> folderfor the active language in the directories (see  <a href="Installing_PPD_Files_.html#BCIHJGBB" target = "_right">"Installation Path"</a>)in which PPD files for Mac OS X can be installed. If Mac OS X doesn'tfind an <code>.lproj</code> folderfor the active language, it looks for a folder for the next preferredlanguage specified by the user. If Mac OS X doesn't find a folderfor that language, it continues down the list of preferred languagesuntil it finds an <code>.lproj</code> folder.</p><p>If you provide a PPD file in a language that is not listedin the International pane of System Preferences, the PPD file isnot available automatically. There are two primary reasons why alanguage your PPD supports might not be listed in the Internationalpane. </p><ul><li>AlthoughApple supports a wide variety of languages, it might not providesupport for all of the languages at the initial release of a product. </font></li><li> The user turned off the option to install the language.</font></li></ul><p>To remedy either situation, a user can do the following:</p><ol><li>Open theInternational pane of System Preferences.</font></li><li>In the Languages pane, click Edit.</font></li><li>Click the checkbox next to the language option that's disabledbut should be enabled. Then click OK.</font></li><li>Drag the language to the top of the Languages list.</font></li></ol><br><table border = "0" BGCOLOR="#E6E6E6"><tr><td><b>Note: </b>Ifthe user changes the preferred language after a print queue is created,the user must delete and then recreate the print queue for the languagechange to take effect.</td></tr></table><br><br>    <br><a href="Installing_PPD_Files_.html" target="_right"><img src="../images/previous.gif" border="0"></a><a href="Specifying__atures_Pane.html" target="_right"><img src="../images/next.gif" border="0"></a>&nbsp;<br><hr><p><font face="Geneva,Helvetica,Arial" size="2">&#169; 2001 Apple Computer, Inc. (Last Updated August 24, 2001)</font></p><!-- start of footer --><!-- googleoff: index -->
+<!-- START INCLUDED FOOTER -->
+<!-- START FIND FEATURE -->
+<TABLE WIDTH="600" CELLPADDING="0" CELLSPACING="0" BORDER="0">
+	<TR>
+		<TD VALIGN=TOP ALIGN=CENTER>
+		<IMG WIDTH="600" SRC="http://a772.g.akamai.net/7/772/51/3aecfedc9747b7/www.apple.com/main/elements/singlegraypixel.gif" ALT="Gray line" HEIGHT="1" BORDER="0" ALIGN="TOP">
+		</TD>
+	</TR>
+
+					<TR ALIGN=CENTER VALIGN=MIDDLE>
+						<TD>
+						<br>
+			
+						<FONT SIZE="1" FACE="Geneva,Arial,Helvetica,Swiss,SunSans-Regular">
+						<A HREF="/contact/">Contact ADC</A>&nbsp;|&nbsp;
+						<A HREF="/sitemap/">ADC Site Map</A>&nbsp;|&nbsp;
+						<A HREF="/search/">ADC Advanced Search</A>
+						
+						</FONT>
+						</TD>
+					</tr>
+		<BR>
+<!-- END FIND FEATURE -->
+<!-- COPYRIGHT INFORMATION -->
+<tr ALIGN=CENTER VALIGN=MIDDLE>
+<td><FONT SIZE="1" FACE="Geneva,Arial,Helvetica,Swiss,SunSans-Regular">For information about Apple Products, please visit
+<A HREF="http://www.apple.com/">Apple.com</a>.</font>
+</td>
+</tr>
+<br><br>
+	<tr ALIGN=CENTER VALIGN=MIDDLE>
+		<td>
+		<FONT SIZE="1" FACE="Geneva,Arial,Helvetica,Swiss,SunSans-Regular">
+			<A HREF="http://www.apple.com/contact/">Contact Apple</A>&nbsp;|&nbsp;<A HREF="http://www.apple.com/legal/privacy/">Privacy Notice</A><BR>Copyright &copy; 2001 Apple Computer, Inc. 
+			<A HREF="http://www.apple.com/legal/">All rights reserved.</A><BR>1-800-MY-APPLE
+		</FONT>
+		
+		</TD>
+	</TR>
+</TABLE>
+</center>
+<br><br>
+<!-- END INCLUDED FOOTER -->
+<!-- googleon: index --><!-- end of footer --></body></html>

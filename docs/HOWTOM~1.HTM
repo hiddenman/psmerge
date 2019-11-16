@@ -1,0 +1,186 @@
+<html><head><meta HTTP-EQUIV="content-type" CONTENT="text/html; charset=windows-1251"><title>Поиск в Google: postscript merge </title><style><!--
+body,td,div,.p,a{font-family:"" }
+div,td{color:#000}
+.f,.fl:link{color:#6f6f6f}
+a:link,.w,a.w:link,.w a:link{color:#00c}
+a:visited,.fl:visited{color:#551a8b}
+a:active,.fl:active{color:#f00}
+.t a:link,.t a:active,.t a:visited,.t{color:#000000}
+.t{background-color:#ffcc33}
+.h{color:#ddaa11}
+.i,.i:link{color:#a90a08}
+.a,.a:link{color:#008000}
+.z{display:none}
+div.n {margin-top: 1ex}
+.n a{font-size:10pt; color:#000}
+.n .i{font-size:10pt; font-weight:bold}
+.q a:visited,.q a:link,.q a:active,.q {text-decoration: none; color: #00c;}
+.b{font-size: 12pt; color:#00c; font-weight:bold}
+//-->
+</style>
+</head><body bgcolor=#ffffff onLoad="document.gs.reset()"><table border=0 cellpadding=0 cellspacing=0><tr><td rowspan=3 valign=top><table cellpadding=0 cellspacing=0 border=0><tr><td align=right valign=bottom><a href=/><img src=images/res0.gif alt="Перейти на домашнюю страницу групп Google." border=0 width=110 height=58></a></td><td valign=bottom><a href=/><img src=images/res1.gif border=0 width=38 height=58 alt=""></a></td><td valign=bottom><a href=/><img src=images/res2.gif border=0 width=52 height=58 alt=""></a></td></tr><tr><td align=right valign=top class=h><b>Группы</b></td><td valign=top><a href=/><img src=images/res3.gif border=0 width=38 height=20 alt=""></a></td><td valign=top><font color=#6f6f6f size=-1>&nbsp;</font></td></tr></table></td><td nowrap><font size=-1><a href=/advanced_group_search?q=postscript+merge&hl=ru>Расширенный Групповой Поиск</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></td></tr><tr><td valign=middle><form name=gs method=GET action=/groups><INPUT TYPE=hidden name=hl value=ru><input type=text name=q size=31 maxlength=2048 value="postscript merge"><font size=-1> <input type=submit name=btnG value="Поиск в Google"></font></td></tr><tr><td><font size=-1>&nbsp;</font></td></tr></form></table><table width=100% border=0 cellpadding=2 cellspacing=0><tr><td bgcolor=#ffcc33 nowrap><font size=-1 color=#000000><b>Groups search result 7</b> for <b>postscript merge</b></font></table><br clear=all>
+<table width=100% bgcolor=#e0e0e0 cellpadding=2 cellspacing=0 border=0><tr><td><font face="">
+
+<table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face="">Search Result 7</font></td></tr></table>
+От:<a href=/groups?hl=ru&q=author:burroadmin%40my-deja.com+>burroadmin@my-deja.com</a> (<a href=mailto:burroadmin%40my-deja.com>burroadmin@my-deja.com</a>)<br>Заголовок:<B style="color:black;background-color:#A0FFFF">Merge </B><B style="color:black;background-color:#ffff66">Postscript</B> Files from VBA code <br>Группы новостей:<a href=/groups?hl=ru&group=comp.lang.postscript>comp.lang.<B style="color:black;background-color:#ffff66">postscript</B></a><br><table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face="">View:  (This is the only article in this thread) | <a href=/groups?selm=8f8h0b%24dqj%241%40nnrp1.deja.com&output=gplain>Original Format</a></font></td></tr></table>
+Число:2000/05/09 <br></font></td></tr></table><pre>I've been searching so long to find a possibility to <B style="color:black;background-color:#A0FFFF">merge </B><B style="color:black;background-color:#ffff66">postscript</B>
+files from code (in my case: from VBA code, out of MS Access). But it
+was quite frustrating so I had to write my own piece.
+Here it is (seems to be long, but is quite fast; at the end, the
+generated (merged) file is renamed because the output file is always
+named the same):
+
+Public Sub MergePostscriptFiles(ByVal sFile1 As String, ByVal sFile2 As
+String)
+'The task of this routine is to <B style="color:black;background-color:#A0FFFF">merge</B> the files on <B style="color:black;background-color:#ffff66">postscript</B> level.
+'That for, one needs to do the following:
+'- count the pages of both files (add both values shown in the line
+'  &quot;%%pages: ...&quot;)
+'- copy the header (ends with &quot;%%endsetup&quot;) and the body (ends with
+'  &quot;end&quot;) of the first file
+'- copy the body and the footer of the second file
+'- append one to the other
+'- adjust the number of pages
+'- search for the lines &quot;FontSV restore&quot; and &quot;PageSV restore&quot; and delete
+'  them (great tip from dejanews...)
+'- save the new file, rename it and store its new name in the global
+'  string &quot;strLastFileName&quot;
+
+    Dim fso As New FileSystemObject
+    Dim obj1, obj2
+    Dim fFile1 As File, fFile2 As File, fOutput As File, fOutput2 As
+File
+    Dim tsTextStreamIn As TextStream, tsTextStreamOut As TextStream
+    Dim sCheck As String, sLine As String
+    Dim iNPages As Integer, iPagesCounter As Integer
+    Const constTempFileName = &quot;c:\temp\tempfax.ps&quot;
+    Const constTempFileName2 = &quot;c:\temp\tempfax2.ps&quot;
+
+    Set fFile1 = fso.GetFile(sFile1)
+    Set fFile2 = fso.GetFile(sFile2)
+    Set obj1 = fso.CreateTextFile(constTempFileName, True)
+    Set obj2 = fso.CreateTextFile(CStr(constTempFileName2), True)
+
+'*** Search the &quot;%%pages: ...&quot; tags (both files!) and copy the numbers
+' of pages into iNPages ***
+    Set tsTextStreamIn = fFile1.OpenAsTextStream(ForReading)
+    sLine = tsTextStreamIn.ReadLine
+    sCheck = LCase(sLine)
+    While Not Left(sCheck, 8) = &quot;%%pages:&quot;
+go_on:
+        sLine = tsTextStreamIn.ReadLine
+        sCheck = LCase(sLine)
+    Wend
+    If sCheck = &quot;%%pages: (atend)&quot; Then GoTo go_on
+    iNPages = CInt(Mid(sCheck, 9))
+    tsTextStreamIn.Close
+    Set tsTextStreamIn = Nothing
+
+    Set tsTextStreamIn = fFile2.OpenAsTextStream(ForReading)
+    sLine = tsTextStreamIn.ReadLine
+    sCheck = LCase(sLine)
+    While Not Left(sCheck, 8) = &quot;%%pages:&quot;
+go_on2:
+        sLine = tsTextStreamIn.ReadLine
+        sCheck = LCase(sLine)
+    Wend
+    If sCheck = &quot;%%pages: (atend)&quot; Then GoTo go_on2
+    iNPages = iNPages + CInt(Mid(sCheck, 9))
+    tsTextStreamIn.Close
+    Set tsTextStreamIn = Nothing
+    Set obj1 = Nothing
+    Set obj2 = Nothing
+
+'*** Search the &quot;end&quot; line in the first file and copy everything up to
+' there ***
+    Set fOutput = fso.GetFile(constTempFileName)
+    Set fOutput2 = fso.GetFile(constTempFileName2)
+    Set tsTextStreamIn = fFile1.OpenAsTextStream(ForReading)
+    Set tsTextStreamOut = fOutput.OpenAsTextStream(ForWriting)
+    sLine = tsTextStreamIn.ReadLine
+    While Not sLine = &quot;end&quot;   '&quot;end&quot; comes up several times: the
+                              'condition is the following &quot;&amp;&amp;Pages: ...&quot;
+go_on2a:
+        tsTextStreamOut.WriteLine sLine
+        sLine = tsTextStreamIn.ReadLine
+    Wend
+    sLine = tsTextStreamIn.ReadLine
+    sCheck = LCase(sLine)
+    If Not Left(sCheck, 8) = &quot;%%pages:&quot; Then
+        tsTextStreamOut.WriteLine &quot;end&quot;
+        GoTo go_on2a
+    End If
+    tsTextStreamIn.Close
+    Set tsTextStreamIn = Nothing
+
+'*** Search the &quot;%%endsetup&quot; line in the second file and copy everything
+' from there on ***
+    Set tsTextStreamIn = fFile2.OpenAsTextStream(ForReading)
+    sLine = tsTextStreamIn.ReadLine
+    sCheck = LCase(sLine)
+    While Not sCheck = &quot;%%endsetup&quot;
+        sLine = tsTextStreamIn.ReadLine    'skips everything until there
+        sCheck = LCase(sLine)
+    Wend
+    'from now on, everything has to be copied (and the number of pages
+    ' must be modified!)
+    sLine = tsTextStreamIn.ReadLine
+    sCheck = LCase(sLine)
+    While Not Left(sCheck, 8) = &quot;%%pages:&quot;
+go_on3:
+        tsTextStreamOut.WriteLine sLine
+        sLine = tsTextStreamIn.ReadLine
+        sCheck = LCase(sLine)
+    Wend
+    If sCheck = &quot;%%pages: (atend)&quot; Then GoTo go_on3
+    sLine = &quot;%%Pages: &quot; &amp; iNPages
+    tsTextStreamOut.WriteLine sLine
+    sLine = tsTextStreamIn.ReadLine
+    While Not tsTextStreamIn.AtEndOfStream = True
+        tsTextStreamOut.WriteLine sLine
+        sLine = tsTextStreamIn.ReadLine
+    Wend
+    tsTextStreamIn.Close
+    Set tsTextStreamIn = Nothing
+    tsTextStreamOut.Close
+    Set tsTextStreamOut = Nothing
+
+'*** Search within the new .ps-file the lines to be deleted and adjust
+' the page counting ***
+    Set tsTextStreamIn = fOutput.OpenAsTextStream(ForReading)
+    Set tsTextStreamOut = fOutput2.OpenAsTextStream(ForWriting)
+    sLine = tsTextStreamIn.ReadLine
+    iPagesCounter = 1
+    While Not tsTextStreamIn.AtEndOfStream = True
+        sCheck = LCase(sLine)
+        If Left(sCheck, 7) = &quot;%%page:&quot; Then
+            sLine = &quot;%%Page: &quot; &amp; iPagesCounter &amp; &quot; &quot; &amp; iPagesCounter
+            iPagesCounter = iPagesCounter + 1
+            tsTextStreamOut.WriteLine sLine
+        ElseIf sCheck = &quot;fontsv restore&quot; Or sCheck = &quot;pagesv restore&quot;
+Then
+            'those lines have to be removed: so don't do anything here!
+        Else
+            tsTextStreamOut.WriteLine sLine
+        End If
+        sLine = tsTextStreamIn.ReadLine
+    Wend
+    tsTextStreamIn.Close
+    Set tsTextStreamIn = Nothing
+    tsTextStreamOut.Close
+    Set tsTextStreamOut = Nothing
+    'wait for file system to free the generated file so that it can be
+    'renamed
+    Sleep 1000
+    strLastFileName = RenameFile(constTempFileName2)
+
+    Set fFile1 = Nothing
+    Set fFile2 = Nothing
+    Set fOutput = Nothing
+    Set fOutput2 = Nothing
+End Sub
+
+
+Sent via Deja.com <a href="http://www.deja.com/">http://www.deja.com/</a>
+Before you buy.</pre> 
+<center><p><hr class=z><table width=100% cellpadding=2 cellspacing=0 border=0><tr><td class=t align=center><font size=-1>&nbsp;</font></table><br><font size=-1 class=p>&copy;2002 Google</font></center></body></html>

@@ -1,0 +1,201 @@
+<html><head><META HTTP-EQUIV="content-type" CONTENT="text/html; charset=windows-1251"><title>Google Groups: видеть нить</title></head><body bgcolor=#ffffff onload="window.focus();"><table bgcolor=#ffcc33 border=0 cellPadding=2 width=100%><tr><td bgcolor=#ffcc33><font face="">Все сообщения из нити</font></td></tr></table>
+<a name="link1"></a>
+<a name="s"></a>
+
+<table width=100% bgcolor=#e0e0e0 cellpadding=2 cellspacing=0 border=0><tr><td><font face="">
+
+<table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face="">Message 1 in thread</font></td></tr></table>
+От:<a href=/groups?hl=ru&q=author:anand%40gsb-crown.stanford.edu+ target=_top>Anand V. Bodapati</a> (<a href=mailto:anand%40gsb-crown.stanford.edu>anand@gsb-crown.stanford.edu</a>)<br>Заголовок:How do I merge postscript files <br>Группы новостей:<a href=/groups?hl=ru&group=comp.lang.postscript target=_top>comp.lang.postscript</a><br><table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face=""><a href=/groups?hl=ru&selm=ANAND.95Jul12174612%40gsb-crown.stanford.edu target=_top>View this article only</a></font></td></tr></table>
+Число:1995/07/13 <br></font></td></tr></table><pre>
+This must surely be a FAQ but I don't find an answer in the FAQ list
+for comp.lang.postscript. Is there way to merge several postscript
+file into one .ps file? I'm not looking for anything fancy here (ie no
+page order switching or other manipulations). Let's say I have files
+f1.ps, f2.ps .... fk.ps; I'd like to produce a file all.ps which when
+printed will give all the pages in the k files in the right order.
+
+I realize the answer to this question may be very dependent on how the
+files are generated. So here's more info. Each of the k files above is
+produced as follows. Example:
+   unix% gnuplot f1.gp; pstops 4:1@.5\(0in,5.5in\)+3@.5\(4.25in,5.5in\)+0@.5\(0in,0.0in\)+2@.5\(4.25in,0.0in\) foo.ps f1.ps
+   # foo.ps is the file produced by `gnuplot f1.gp`
+So f1.ps is the postscript output from a gnuplot file, altered so that
+four pages are printed on one physical page. All k files are produced
+this way, and so all have the same preamble. Shouldn't psmerge.pl in
+the psutils suite work on this problem? I thought it would, but it
+didn't; all psmerge.pl produced was a rather short file which appeared
+to be the just the preamble of some file (though not the preamble common
+to all the k input files).
+
+I asked Jon Monsarrat (one time maintainer of the
+comp.sources.postscript FAQ) about this, he suggested that simply
+appending the files should work.
+ unix% cat f1.ps .... fk.ps &gt;&gt; all.ps
+This works (though you know this only after you print the file all.ps,
+because `ghostview all.ps` shows only f1.ps), but only for a small
+number of files --- in my case the limit is 23. After printing the
+contents of f23.ps, the print job aborts with some stack error. I'm a
+postscript novice so I can't say more about what that error is.
+
+
+Suggestions greatly appreciated. Thanks,
+-Anand.
+-------------------------------------------------------
+
+For completeness, I'm including file f1.ps, in case you need to know
+more than what I've already said. 
+
+%!PS-Adobe-2.0
+%%Creator: gnuplot
+%%DocumentFonts: Helvetica
+%%BoundingBox: 50 50 554 770
+%%Pages: 1 0
+%%EndComments
+%%BeginProcSet: PStoPS 1 13
+userdict begin
+[/showpage/erasepage/copypage]{dup where{pop dup load
+ type/operatortype eq{1 array cvx dup 0 3 index cvx put</pre> 
+<p><i><a href=/groups?hl=ru&selm=ANAND.95Jul12174612%40gsb-crown.stanford.edu&rnum=1 target=_top>Прочитать остаток сообщения...</a> (еще 594 строк)</i><p><a name="link2"></a>
+
+<table width=100% bgcolor=#e0e0e0 cellpadding=2 cellspacing=0 border=0><tr><td><font face="">
+
+<table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face="">Message 2 in thread</font></td></tr></table>
+От:<a href=/groups?hl=ru&q=author:eraxet%40era-t.ericsson.se+ target=_top>Erik Tjernlund</a> (<a href=mailto:eraxet%40era-t.ericsson.se>eraxet@era-t.ericsson.se</a>)<br>Заголовок:Re: How do I merge postscript files <br>Группы новостей:<a href=/groups?hl=ru&group=comp.lang.postscript target=_top>comp.lang.postscript</a><br><table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face=""><a href=/groups?hl=ru&selm=3u2mic%24db3%40erinews.ericsson.se target=_top>View this article only</a></font></td></tr></table>
+Число:1995/07/13 <br></font></td></tr></table><pre>I asked this question a couple of days ago
+and the answer I got from Michael Schindler (Thanks!)
+was that you write the word &quot;save&quot; at the beginning
+of the first file and the word &quot;restore&quot; at the end
+of the first file. Then you just cat the documents
+together.
+
+I don't know if this want you want, but I worked great
+for me!
+
+
+==============================================================
+
+           Erik Tjernlund &lt;eraxet@era-t.ericsson.se&gt;          
+              Vastgotagrand 15 VII          
+               S-118 28 Stockholm
+
+             Phone: +46-8-720 01 72
+             Fax:   +46-8-720 39 39
+             Pager: +46-740-283 299
+
+===============================================================</pre> 
+<a name="link3"></a>
+
+<table width=100% bgcolor=#e0e0e0 cellpadding=2 cellspacing=0 border=0><tr><td><font face="">
+
+<table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face="">Message 3 in thread</font></td></tr></table>
+От:<a href=/groups?hl=ru&q=author:olle%40gustav.unda.fi+ target=_top>Olavi Sakari</a> (<a href=mailto:olle%40gustav.unda.fi>olle@gustav.unda.fi</a>)<br>Заголовок:Re: How do I merge postscript files <br>Группы новостей:<a href=/groups?hl=ru&group=comp.lang.postscript target=_top>comp.lang.postscript</a><br><table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face=""><a href=/groups?hl=ru&selm=3u2t42%24c22%40unda.fi target=_top>View this article only</a></font></td></tr></table>
+Число:1995/07/13 <br></font></td></tr></table><pre>In article &lt;3u2mic$db3@erinews.ericsson.se&gt;, Erik Tjernlund &lt;eraxet@era-t.ericsson.se&gt; writes:
+<font color="#660066"> &gt; I asked this question a couple of days ago
+ &gt; and the answer I got from Michael Schindler (Thanks!)
+ &gt; was that you write the word &quot;save&quot; at the beginning
+ &gt; of the first file and the word &quot;restore&quot; at the end
+ &gt; of the first file. Then you just cat the documents
+ &gt; together.
+ &gt; 
+ &gt; I don't know if this want you want, but I worked great
+ &gt; for me!</font>
+
+There was also this posting not so long a time ago:
+
+    From: dforthof@mv.us.adobe.com (David Forthoffer)
+    Subject: Re: concatenating postscript files
+    Message-ID: &lt;dforthof-3006951727260001@falcons.mv.us.adobe.com&gt;
+    Sender: usenet@adobe.com (USENET NEWS)
+    Organization: Adobe Systems
+    References: &lt;3svhj4$aa4@news.nd.edu&gt;
+    Date: Sat, 1 Jul 1995 00:27:26 GMT
+    Lines: 26
+
+    jtran@hilbert.helios.nd.edu (john tran) wrote:
+
+<font color="#660066">    &gt; I know (think) that it is not possible to concencatenate several
+    &gt; postscript files (generated by many different sources, ei dvips,
+    &gt; wordperfect, ms-word, etc.) into one large postscript file.  Is
+    &gt; this correct?
+    &gt; 
+    &gt; I want some authoritive confirmation before I tell my manager --
+    &gt; if however this is in fact possible please show me how.  I am
+    &gt; grateful for any response.</font>
+
+    If you're printing on an Adobe Level 2 printer
+    you can separate each job with,
+    &quot;true 0 startjob pop&quot;
+
+    This should almost always work,
+    even if dictionaries have been loaded on the stack.
+    It effectively restarts the PostScript interpreter between jobs.
+
+    This is more reliable than surrounding each job with
+    save and restore.
+
+    -- 
+    David Forthoffer         dforthof@mv.us.adobe.com
+    &quot;I'm not speaking for Adobe Systems Incorporated&quot;
+    Check out <a target=_top href="ftp://ftp.adobe.com">ftp.adobe.com</a> and <a target=_top href="http://www.adobe.com">http://www.adobe.com</a>.
+
+
+Olle
+--
+  Olavi Sakari                          osakari@unda.fi
+  +358 0 5255 8556 (voice)              +358 0 5255 8585 (fax)</pre> 
+<a name="link4"></a>
+
+<table width=100% bgcolor=#e0e0e0 cellpadding=2 cellspacing=0 border=0><tr><td><font face="">
+
+<table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face="">Message 4 in thread</font></td></tr></table>
+От:<a href=/groups?hl=ru&q=author:brown%40ftms.com+ target=_top>Vidiot</a> (<a href=mailto:brown%40ftms.com>brown@ftms.com</a>)<br>Заголовок:Re: How do I merge postscript files <br>Группы новостей:<a href=/groups?hl=ru&group=comp.lang.postscript target=_top>comp.lang.postscript</a><br><table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face=""><a href=/groups?hl=ru&selm=4408%40ftms.UUCP target=_top>View this article only</a></font></td></tr></table>
+Число:1995/07/14 <br></font></td></tr></table><pre>
+In article &lt;3u2mic$db3@erinews.ericsson.se&gt;, eraxet@era-t.ericsson.se (Erik Tjernlund) writes:
+&lt;I asked this question a couple of days ago
+&lt;and the answer I got from Michael Schindler (Thanks!)
+&lt;was that you write the word &quot;save&quot; at the beginning
+&lt;of the first file and the word &quot;restore&quot; at the end
+&lt;of the first file. Then you just cat the documents
+&lt;together.
+&lt;
+&lt;I don't know if this want you want, but I worked great
+&lt;for me!
+
+It will help for printing, but Ghostscript won't like it, since the DSC
+comments are still screwed up.
+-- 
+System Administrator - Extrel FTMS - Madison WI.
+e-mail: brown@ftms.com
+phone: (608) 273-8262  fax: (608) 273-8719  voice-mail: (800) 426-6488 ext 6293
+Visit - <a target=_top href="http://www.cdsnet.net/vidiot/">http://www.cdsnet.net/vidiot/</a>  (Your link to the world of Star Trek)</pre> 
+<a name="link5"></a>
+
+<table width=100% bgcolor=#e0e0e0 cellpadding=2 cellspacing=0 border=0><tr><td><font face="">
+
+<table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face="">Message 5 in thread</font></td></tr></table>
+От:<a href=/groups?hl=ru&q=author:brown%40ftms.com+ target=_top>Vidiot</a> (<a href=mailto:brown%40ftms.com>brown@ftms.com</a>)<br>Заголовок:Re: How do I merge postscript files <br>Группы новостей:<a href=/groups?hl=ru&group=comp.lang.postscript target=_top>comp.lang.postscript</a><br><table cellpadding=0 cellspacing=0 border=0 align=right><tr><td><font face=""><a href=/groups?hl=ru&selm=4404%40ftms.UUCP target=_top>View this article only</a></font></td></tr></table>
+Число:1995/07/14 <br></font></td></tr></table><pre>
+In article &lt;ANAND.95Jul12174612@gsb-crown.stanford.edu&gt;, anand@gsb-crown.stanford.edu (Anand V. Bodapati) writes:
+&lt;
+&lt;This must surely be a FAQ but I don't find an answer in the FAQ list
+&lt;for comp.lang.postscript. Is there way to merge several postscript
+&lt;file into one .ps file? I'm not looking for anything fancy here (ie no
+&lt;page order switching or other manipulations). Let's say I have files
+&lt;f1.ps, f2.ps .... fk.ps; I'd like to produce a file all.ps which when
+&lt;printed will give all the pages in the k files in the right order.
+
+Sounds like you need to write a script that is specific to your situation
+that will take a list of PS files and cat them together, by:
+
+ 1) stripping out the prolog
+ 2) stripping out the pages
+ 3) outputting the prolog with the %%Pages: corrected
+ 4) outputting each of the pages with the %%Page: corrected
+
+
+-- 
+System Administrator - Extrel FTMS - Madison WI.
+e-mail: brown@ftms.com
+phone: (608) 273-8262  fax: (608) 273-8719  voice-mail: (800) 426-6488 ext 6293
+Visit - <a target=_top href="http://www.cdsnet.net/vidiot/">http://www.cdsnet.net/vidiot/</a>  (Your link to the world of Star Trek)</pre> 
+<table border=0 width=100% cellpadding=0 cellspacing=0><tr><td bgcolor=#ffcc33><img height=3 alt="" src="/images/cleardot.gif"></td></tr></table><br><center><font size=-1>&copy;2002 Google</font></center></body></html>

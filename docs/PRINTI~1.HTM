@@ -1,0 +1,139 @@
+<HTML>		<HEAD>		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">		<meta name="Copyright" content="Copyright 2001 Apple Computer, Inc. All Rights Reserved.">        <title>Printing Features in the UserInterface</title>		</HEAD>	<BODY bgcolor="#ffffff"><!-- start of header --><!-- googleoff: index -->
+<!-- Preload Script (smnavbar) -->
+<script language="JavaScript">
+<!--
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		smnavbar_02_over = newImage("/sm_navbar/smnavbar_02_over.gif");
+		smnavbar_03_over = newImage("/sm_navbar/smnavbar_03_over.gif");
+		smnavbar_04_over = newImage("/sm_navbar/smnavbar_04_over.gif");
+		smnavbar_06_over = newImage("/sm_navbar/smnavbar_06_over.gif");
+		smnavbar_07_over = newImage("/sm_navbar/smnavbar_07_over.gif");
+		preloadFlag = true;
+	}
+}
+//Set lengths for Search field
+if(navigator.appName == "Netscape"){
+   TextAreaSize = 20;
+}
+else{
+   TextAreaSize = 20;
+}
+var textfield = "<input type='text' name='Search' size='"+TextAreaSize+"'>";
+preloadImages();
+// -->
+</SCRIPT>
+	<form name="MidSearch" method="post" action="http://developer.apple.com/cgi-bin/simpsearch.pl">
+
+<!-- Slices (smnavbar) -->
+<table width="500" border="0" cellpadding="0" cellspacing="0" background="/sm_navbar/navbg.gif">
+	<tr>
+		<td>
+			<a href="http://www.apple.com/developer/" target="_top">
+				<img src="/sm_navbar/smnavbar_01.gif" width=86 height=32 border=0 alt="ADC"></a></td>
+		<td>
+			<a href="http://developer.apple.com/membership/" target="_top"
+			   onmouseover="changeImages('smnavbar_02', '/sm_navbar/smnavbar_02_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_02', '/sm_navbar/smnavbar_02.gif'); return true;">
+				<img name="smnavbar_02" src="/sm_navbar/smnavbar_02.gif" width=82 height=32 border=0 alt="Membership"></a></td>
+		<td>
+			<a href="http://developer.apple.com/technical/" target="_top"
+			   onmouseover="changeImages('smnavbar_03', '/sm_navbar/smnavbar_03_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_03', '/sm_navbar/smnavbar_03.gif'); return true;">
+				<img name="smnavbar_03" src="/sm_navbar/smnavbar_03.gif" width=66 height=32 border=0 alt="Technical"></a></td>
+		<td>
+			<a href="http://developer.apple.com/business/" target="_top"
+			   onmouseover="changeImages('smnavbar_04', '/sm_navbar/smnavbar_04_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_04', '/sm_navbar/smnavbar_04.gif'); return true;">
+				<img name="smnavbar_04" src="/sm_navbar/smnavbar_04.gif" width=68 height=32 border=0 alt="Business"></a></td>
+		<TD valign="top">
+		<center>
+<table width="122" border="0" cellpadding="3.5" cellspacing="0">				
+<tr>
+<td width="21" align="center" valign="middle">		
+<script>
+<!--
+document.write(textfield);
+//--><input type='text' name='Search' size='14'>
+</script>
+</td>
+</tr>
+</table>
+</center>
+		</TD>
+		<td>
+			<a href="JavaScript:document.MidSearch.submit()"
+			   onmouseover="changeImages('smnavbar_06', '/sm_navbar/smnavbar_06_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_06', '/sm_navbar/smnavbar_06.gif'); return true;">
+				<img name="smnavbar_06" src="/sm_navbar/smnavbar_06.gif" width=51 height=32 border=0 alt="Search"></a></td>
+		<td>
+			<a href="http://developer.apple.com/search/" target="_top"
+			   onmouseover="changeImages('smnavbar_07', '/sm_navbar/smnavbar_07_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_07', '/sm_navbar/smnavbar_07.gif'); return true;">
+				<img name="smnavbar_07" src="/sm_navbar/smnavbar_07.gif" width=73 height=32 border=0 alt="Advanced Search"></a></td>
+	</tr>
+</table>
+</form>
+<!-- googleon: index --><!-- end of header --><!-- start of path --><font face="Geneva,Helvetica,Arial" size="1"><b>PATH<spacer type="horizontal" size="5">&nbsp;</b><a href="../../../../../../index.html" target="_top">Documentation</a><b>&gt;         </b></font><a href="../../../../coretechnologies.html" target="_top"><font face="Geneva,Helvetica,Arial" size="1">Core         Technologies</font></a></font><br>      <br><!-- end of path --><a href="PostScript__ption_Files.html" target="_right"><img src="../images/previous.gif" border="0"></a><a href="How_Mac_OS__s_PPD_Files.html" target="_right"><img src="../images/next.gif" border="0"></a>&nbsp;<br><!-- apple_doc: pageHeadingStart --><a name = "BCIBIJEJ"></a><h2><font face="Lucida Grande,Helvetica,Arial">Printing Features in the UserInterface</font></h2><!-- apple_doc: pageHeadingEnd --><p>In Mac OS X, printing features can appear in the Print dialoguser interface in three types of panes. From a user's perspective,the panes should look integrated, as the panes are distinguishedby how the user interface is generated, not how the panes appearvisually. </p><p>The type and number of panes vary depending on the printer'sspecific features and whether it is a PostScript printer. Theseare the three types of panes:</p><ul><li>Standardpanes. You get built-in panes for standard printing features "free"on Mac OS X. These are described in  <a href="#TPXREF112">"Standard Panes"</a>. </font></li><li>Printer Features pane. This pane is available only for PostScriptprinters. It supports PostScript features that are not supportedin a standard or custom pane. See  <a href="#CJBBADCD">"Printer Features Pane"</a> formore information.</font></li><li>Custom panes. You can create a custom pane for a printer bywriting a printing dialog extension (PDE). When you write a PDEfor a PostScript printer, you need to specify, in the PDE's informationproperty list, which PPD keywords specify the features that areimplemented in the PDE. See  <a sector="mod" href="../tasks/iAdding_PPD__operty_List.html" target="_top">"Adding PPD Keywords to a PDE's Information Property List"</a>.<p>See <i><a href="../../../../../Carbon/pdf/ExtendingPrintDialogs.pdf" target="_top">Inside Mac OS X: Extending Printing Dialogs in Mac OS X</a></i> for informationon writing PDEs for PostScript and nonPostScript printers.</p></font></li></ul><br><a name = "TPXREF112"></a><h3><font face="Lucida Grande,Helvetica,Arial">Standard Panes</font></h3><p>Mac OS X supplies a number of panes in the Print dialog tosupport most standard printer features. Some of the features inthe standard panes are available only for PostScript printers. PostScript-specificfeatures are noted in the description of the panes in the followingsections. The printing system uses information from the PPD fileto populate the PostScript-specific features in the panes.</p><br><a name = "TPXREF113"></a><h4><font face="Lucida Grande,Helvetica,Arial">Copies & Pages</font></h4><p>The Copies & Pages pane lets the user set the number ofcopies, specify whether copies should be collated, and set the rangeof pages to be printed. This pane is available to any printer, butcollation is implemented differently for some PostScript printers.If the <code>*Collate</code> keywordis in the PPD file and is not constrained by the <code>*UIConstraints</code> keyword, collationis done by the PostScript printer. If the <code>*Collate</code> keywordis not in the PPD file, the printing system generates the printjob so the output is pre-collated. </p><br><a name = "TPXREF102"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Figure2-1 The Copies & Pages pane in thePrint dialog</font></b></p> <img src = "../art/ppdcopiespages.gif" alt = "[image: ../art/ppdcopiespages.gif]"><br><a name = "TPXREF114"></a><h4><font face="Lucida Grande,Helvetica,Arial">Layout</font></h4><p> The Layout pane provides settings for the number of pagesper sheet and the type of border on a page. For multiple pages persheet, the user can also specify the layout direction&#151;left toright then top to bottom, top to bottom then left to right, andso forth. This pane is available for all printers.</p><br><a name = "TPXREF103"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Figure2-2 The Layout pane in the Print Dialog</font></b></p> <img src = "../art/ppdlayout.gif" alt = "[image: ../art/ppdlayout.gif]"><br><a name = "TPXREF115"></a><h4><font face="Lucida Grande,Helvetica,Arial">Output Options</font></h4><p>The Output Options is available for any printer, and providesthe option to save a file as a PDF file or a PostScript file insteadof sending it to a printer. The PostScript option is available onlyin Mac OS X version 10.1 and later, and only for PostScript printers. </p><br><a name = "TPXREF104"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Figure2-3 The Output Options pane in the Printdialog</font></b></p> <img src = "../art/ppdoutputopts.gif" alt = "[image: ../art/ppdoutputopts.gif]"><br><a name = "TPXREF116"></a><h4><font face="Lucida Grande,Helvetica,Arial">Paper Feed</font></h4><p>The Paper Feed pane is available only for PostScript printers.There are two options in the Paper Feed pane: use paper from a singletray or use one tray for the first sheet and another tray for theremaining sheets. For either option, the user can select the trays.The tray option pop-up menus are populated by the values of the <code>*InputSlot</code> and <code>*ManualFeed</code> keywordsin the PPD file for the printer. If the user chooses Auto Select,PostScript code associated with the <code>*PageSize</code> keywordis used to select the tray. </p><br><a name = "TPXREF105"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Figure2-4 The Paper Feed pane in the Print dialog</font></b></p> <img src = "../art/ppdpaperfeed.gif" alt = "[image: ../art/ppdpaperfeed.gif]"><br><a name = "TPXREF117"></a><h4><font face="Lucida Grande,Helvetica,Arial">Error Handling</font></h4><p>The Error Handling pane is available only for PostScript printers.The Error Handling pane lets the user specify the action to be takenwhen certain errors occur. One setting determines how PostScripterrors are handled and the other specifies to which tray to switchwhen the selected paper tray is empty. Tray switching options areenabled only when the PPD file contains the <code>*TraySwitch</code> keyword.</p><br><a name = "TPXREF106"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Figure2-5 The Error Handling pane in the Printdialog</font></b></p> <img src = "../art/ppderrors.gif" alt = "[image: ../art/ppderrors.gif]"><br><a name = "TPXREF118"></a><h4><font face="Lucida Grande,Helvetica,Arial">Duplex</font></h4><p>The Duplex pane is available only for printers that providethe option to print on both sides of a sheet. Double-sided printingis specified by the <code>*Duplex</code> keywordin the PPD file for the printer. </p><br><a name = "TPXREF107"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Figure2-6 The Duplex pane in the Print dialog</font></b></p> <img src = "../art/ppdduplex.gif" alt = "[image: ../art/ppdduplex.gif]"><br><a name = "TPXREF119"></a><h4><font face="Lucida Grande,Helvetica,Arial">Summary</font></h4><p>The Summary pane in the Print dialog displays a list of thecurrently selected printing options along with information thatcould be useful for troubleshooting (such as the printer's modelname). The model name and PPD file version are displayed for PostScript printerswhose PPD file contains values for the <code>*ModelName</code> and <code>*FileVersion</code> keywords. Displayof the file version keyword is available only with Mac OS X version10.1 and later.</p><br><a name = "TPXREF108"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Figure2-7  The Summary pane in the Print dialog</font></b></p> <img src = "../art/ppdsummary2.gif" alt = "[image: ../art/ppdsummary2.gif]"><br><a name = "CJBBADCD"></a><h3><font face="Lucida Grande,Helvetica,Arial">Printer Features Pane</font></h3><p>Printer Features is a pane in the Print dialog that is availableonly for PostScript printers. The pane contains any user interfacefeature specified in a PPD file that isn't one of the featuresin the Standard panes described in the previous section or in acustom pane, as long as the feature is defined as follows.</p><ul><li>The featuremust be defined with the <code>*OpenUI/*CloseUI</code> keywords.</font></li><li>The <code>*OpenUI</code> keywordmust have either the <code>Boolean</code> or <code>PickOne</code> option.The <code>PickMany</code> option isnot supported.</font></li><li>A <code>Boolean</code> optionmust explicitly define two options, <code>True</code> and <code>False</code>,otherwise it is treated as a <code>PickOne</code> option.</font></li><li>Features can be grouped by enclosing their definitions withthe <code>*OpenGroup/*CloseGroup</code> keywords,and specifying a name for the group. This is optional.</font></li></ul><p> The Mac OS X printing system follows these rules to constructthe Printer Features pane:</p><ul><li>Featuresare organized within the Printer Features pane under tabs, as shownin  <a href="#CJBEAHIG">Figure 2-8</a>. Tabsare labeled sequentially as Features 1, Features 2, and so forth,unless features are defined in groups. Then, the tabs are labelledwith the group name.  <a href="#BAJDAJFI">Figure 2-9</a> shows an example of tabs that are labelled with thegroup name specified using the <code>*OpenGroup/*CloseGroup</code> keywords. </font></li><li> The interface elements (checkboxes and pop-up menus) aredisplayed left-justified in the tabbed pane in the order in whichthey are defined in the PPD file.</font></li><li>No more than five features appear in a tabbed pane. If featuresare grouped and a group contains more than five features, new tabbedpanes are created as needed. The additional tabs are labelled sequentiallyas Group Name 2, Group Name 3, and so forth.</font></li><li>A <code>PickOne</code> listis displayed in the interface as a pop-up menu.</font></li><li>A <code>Boolean</code> itemis displayed in the interface as a checkbox. A checked item is <code>True</code>;an unchecked item is <code>False</code>. </font></li><li>A <code>Boolean</code> itemthat does not have two, and only two, options one of which is <code>True</code> and theother <code>False</code>, is displayedas a pop-up menu. </font></li><li>If a <code>PickMany</code> listis defined, it is ignored. This option is not currently supported.</font></li></ul><br><a name = "CJBEAHIG"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Figure2-8 A Printer Features pane in which theprinting system groups the features</font></b></p> <img src = "../art/ppdautotab1.gif" alt = "[image: ../art/ppdautotab1.gif]"><p> See  <a sector="mod" href="../tasks/iSpecifying__atures_Pane.html" target="_top">"Specifying Grouping in the Printer Features Pane"</a> for more information on how printervendors can use grouping keywords to control the layout of the Printer Featurespane.</p><p>If you plan to write a printing dialog extension (PDE) tocreate a custom interface, see  <a sector="mod" href="../tasks/iAdding_PPD__operty_List.html" target="_top">"Adding PPD Keywords to a PDE's Information Property List"</a>. You need to register thePPD keywords that are supported by your custom printing dialog extension, otherwisethe features associated with the keywords appear in the PrinterFeatures pane. </p><br><a name = "BAJDAJFI"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Figure2-9 A Printer Features pane in which groupsare specified in the PPD file</font></b></p> <img src = "../art/ppdgroups.gif" alt = "[image: ../art/ppdgroups.gif]"><br>    <br><a href="PostScript__ption_Files.html" target="_right"><img src="../images/previous.gif" border="0"></a><a href="How_Mac_OS__s_PPD_Files.html" target="_right"><img src="../images/next.gif" border="0"></a>&nbsp;<br><hr><p><font face="Geneva,Helvetica,Arial" size="2">&#169; 2001 Apple Computer, Inc. (Last Updated August 24, 2001)</font></p><!-- start of footer --><!-- googleoff: index -->
+<!-- START INCLUDED FOOTER -->
+<!-- START FIND FEATURE -->
+<TABLE WIDTH="600" CELLPADDING="0" CELLSPACING="0" BORDER="0">
+	<TR>
+		<TD VALIGN=TOP ALIGN=CENTER>
+		<IMG WIDTH="600" SRC="http://a772.g.akamai.net/7/772/51/3aecfedc9747b7/www.apple.com/main/elements/singlegraypixel.gif" ALT="Gray line" HEIGHT="1" BORDER="0" ALIGN="TOP">
+		</TD>
+	</TR>
+
+					<TR ALIGN=CENTER VALIGN=MIDDLE>
+						<TD>
+						<br>
+			
+						<FONT SIZE="1" FACE="Geneva,Arial,Helvetica,Swiss,SunSans-Regular">
+						<A HREF="/contact/">Contact ADC</A>&nbsp;|&nbsp;
+						<A HREF="/sitemap/">ADC Site Map</A>&nbsp;|&nbsp;
+						<A HREF="/search/">ADC Advanced Search</A>
+						
+						</FONT>
+						</TD>
+					</tr>
+		<BR>
+<!-- END FIND FEATURE -->
+<!-- COPYRIGHT INFORMATION -->
+<tr ALIGN=CENTER VALIGN=MIDDLE>
+<td><FONT SIZE="1" FACE="Geneva,Arial,Helvetica,Swiss,SunSans-Regular">For information about Apple Products, please visit
+<A HREF="http://www.apple.com/">Apple.com</a>.</font>
+</td>
+</tr>
+<br><br>
+	<tr ALIGN=CENTER VALIGN=MIDDLE>
+		<td>
+		<FONT SIZE="1" FACE="Geneva,Arial,Helvetica,Swiss,SunSans-Regular">
+			<A HREF="http://www.apple.com/contact/">Contact Apple</A>&nbsp;|&nbsp;<A HREF="http://www.apple.com/legal/privacy/">Privacy Notice</A><BR>Copyright &copy; 2001 Apple Computer, Inc. 
+			<A HREF="http://www.apple.com/legal/">All rights reserved.</A><BR>1-800-MY-APPLE
+		</FONT>
+		
+		</TD>
+	</TR>
+</TABLE>
+</center>
+<br><br>
+<!-- END INCLUDED FOOTER -->
+<!-- googleon: index --><!-- end of footer --></body></html>

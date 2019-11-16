@@ -1,0 +1,139 @@
+<HTML>		<HEAD>		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">		<meta name="Copyright" content="Copyright 2001 Apple Computer, Inc. All Rights Reserved.">        <title>Specifying Grouping in thePrinter Features Pane</title>		</HEAD>	<BODY bgcolor="#ffffff"><!-- start of header --><!-- googleoff: index -->
+<!-- Preload Script (smnavbar) -->
+<script language="JavaScript">
+<!--
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		smnavbar_02_over = newImage("/sm_navbar/smnavbar_02_over.gif");
+		smnavbar_03_over = newImage("/sm_navbar/smnavbar_03_over.gif");
+		smnavbar_04_over = newImage("/sm_navbar/smnavbar_04_over.gif");
+		smnavbar_06_over = newImage("/sm_navbar/smnavbar_06_over.gif");
+		smnavbar_07_over = newImage("/sm_navbar/smnavbar_07_over.gif");
+		preloadFlag = true;
+	}
+}
+//Set lengths for Search field
+if(navigator.appName == "Netscape"){
+   TextAreaSize = 20;
+}
+else{
+   TextAreaSize = 20;
+}
+var textfield = "<input type='text' name='Search' size='"+TextAreaSize+"'>";
+preloadImages();
+// -->
+</SCRIPT>
+	<form name="MidSearch" method="post" action="http://developer.apple.com/cgi-bin/simpsearch.pl">
+
+<!-- Slices (smnavbar) -->
+<table width="500" border="0" cellpadding="0" cellspacing="0" background="/sm_navbar/navbg.gif">
+	<tr>
+		<td>
+			<a href="http://www.apple.com/developer/" target="_top">
+				<img src="/sm_navbar/smnavbar_01.gif" width=86 height=32 border=0 alt="ADC"></a></td>
+		<td>
+			<a href="http://developer.apple.com/membership/" target="_top"
+			   onmouseover="changeImages('smnavbar_02', '/sm_navbar/smnavbar_02_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_02', '/sm_navbar/smnavbar_02.gif'); return true;">
+				<img name="smnavbar_02" src="/sm_navbar/smnavbar_02.gif" width=82 height=32 border=0 alt="Membership"></a></td>
+		<td>
+			<a href="http://developer.apple.com/technical/" target="_top"
+			   onmouseover="changeImages('smnavbar_03', '/sm_navbar/smnavbar_03_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_03', '/sm_navbar/smnavbar_03.gif'); return true;">
+				<img name="smnavbar_03" src="/sm_navbar/smnavbar_03.gif" width=66 height=32 border=0 alt="Technical"></a></td>
+		<td>
+			<a href="http://developer.apple.com/business/" target="_top"
+			   onmouseover="changeImages('smnavbar_04', '/sm_navbar/smnavbar_04_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_04', '/sm_navbar/smnavbar_04.gif'); return true;">
+				<img name="smnavbar_04" src="/sm_navbar/smnavbar_04.gif" width=68 height=32 border=0 alt="Business"></a></td>
+		<TD valign="top">
+		<center>
+<table width="122" border="0" cellpadding="3.5" cellspacing="0">				
+<tr>
+<td width="21" align="center" valign="middle">		
+<script>
+<!--
+document.write(textfield);
+//--><input type='text' name='Search' size='14'>
+</script>
+</td>
+</tr>
+</table>
+</center>
+		</TD>
+		<td>
+			<a href="JavaScript:document.MidSearch.submit()"
+			   onmouseover="changeImages('smnavbar_06', '/sm_navbar/smnavbar_06_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_06', '/sm_navbar/smnavbar_06.gif'); return true;">
+				<img name="smnavbar_06" src="/sm_navbar/smnavbar_06.gif" width=51 height=32 border=0 alt="Search"></a></td>
+		<td>
+			<a href="http://developer.apple.com/search/" target="_top"
+			   onmouseover="changeImages('smnavbar_07', '/sm_navbar/smnavbar_07_over.gif'); return true;"
+			   onmouseout="changeImages('smnavbar_07', '/sm_navbar/smnavbar_07.gif'); return true;">
+				<img name="smnavbar_07" src="/sm_navbar/smnavbar_07.gif" width=73 height=32 border=0 alt="Advanced Search"></a></td>
+	</tr>
+</table>
+</form>
+<!-- googleon: index --><!-- end of header --><!-- start of path --><font face="Geneva,Helvetica,Arial" size="1"><b>PATH<spacer type="horizontal" size="5">&nbsp;</b><a href="../../../../../../index.html" target="_top">Documentation</a><b>&gt;         </b></font><a href="../../../../coretechnologies.html" target="_top"><font face="Geneva,Helvetica,Arial" size="1">Core         Technologies</font></a></font><br>      <br><!-- end of path --><a href="Creating_a__ed_PPD_File.html" target="_right"><img src="../images/previous.gif" border="0"></a><a href="Adding_PPD__operty_List.html" target="_right"><img src="../images/next.gif" border="0"></a>&nbsp;<br><!-- apple_doc: pageHeadingStart --><a name = "CJBFJGCB"></a><h2><font face="Lucida Grande,Helvetica,Arial">Specifying Grouping in thePrinter Features Pane</font></h2><!-- apple_doc: pageHeadingEnd --><p>In Mac OS X version 10.1 and later, printer vendors can usegrouping keywords in a PPD file to specify how features should begrouped in the Printer Features pane. As described in  <a sector="mod" href="../concepts/iPrinting_Fe_r_Interface.html" target="_top">"Printer Features Pane"</a>,the features you can group are limited to Boolean items and listsin which only one option can be selected at time. This section showsyou how to specify a group that has two features: a pop-up menu(<code>PickOne</code>) for Fold Typeand a checkbox <code>Boolean</code> forBanner Sheet. </p><p> <a href="#BBCFDDFI">Listing 3-2</a> is an excerpt from a PPD file. Note that some ofthe lines in the listing are numbered. An explanation for each numberedline follows the listing. </p><a name = "BBCFDDFI"></a><p><b><font face="Geneva,Helvetica,Arial" size="2">Listing3-2 Specifying a group of Finishing featuresin a PPD file</font></b></p><pre>*OpenGroup: Finishing/Finishing Options                                    //1*OpenUI *FoldType/Fold Type: PickOne                                       //2*DefaultFoldType: None                                                     //3*FoldType Fan/Fan: "% postscript code to invoke Fan fold "                 //4*FoldType Saddle/Saddle: "% postscript code to invoke Saddle fold " *FoldType Wing/Wing: "% postscript code to invoke Wing fold "*FoldType None/None: "% postscript code to invoke no fold "*CloseUI: *FoldType                                                        //5*OpenUI *BannerSheet/Banner Sheet: Boolean                                 //6*DefaultBannerSheet False:                                                 //7*BannerSheet True/True: "% postscript code to invoke a banner sheet "      //8*BannerSheet False/False: "% postscript code to turn off a banner sheet "*CloseUI: *BannerSheet                                                     //9*CloseGroup: Finishing                                                     //10</pre><p>Here are the explanations for the numbered lines in  <a href="#BBCFDDFI">Listing 3-2</a>:</p><ol><li>When youdefine a group, the <code>*OpenGroup</code> keywordmust be at the start of the group of features. The translation stringvalue <code>Finishing Options</code> isthe group's name. This appears as the tab name in the PrinterFeatures pane. </font></li><li>The <code>*OpenUI</code> keywordmust be at the start of any feature that appears in the user interface.The option *FoldType is the feature name. The string value afterthe slash (/)&#151;<code>Fold Type</code> &#151;isthe translation string; it's the text label that appears for thatfeature in the user interface. The option <code>PickOne</code> specifiesa list of options from which only one can be selected. It is representedas a pop-up menu in the user interface.</font></li><li>The keyword <code>*DefaultFoldType</code> specifiesthe required default value, which in this case is the string value <code>None</code>.This is the option that's selected when the user opens the PrinterFeatures panel.</font></li><li>This line, and the other lines that begin with the keyword <code>*FoldType</code>,specifies an option that appears in the Fold Type pop-up menu. <code>*FoldType</code> mustbe followed by a string value; in this case, it is <code>Fan</code>.The translation string&#151;<code>Fan</code>&#151;appearsafter the slash. The translation string must be followed by thePostScript code that invokes this feature in the printer.</font></li><li>The <code>*CloseUI</code> keywordmust be at the end of any feature that's defined with the <code>*OpenUI</code> keyword.It must be followed by the main keyword for the feature name.</font></li><li>This line defines a <code>Boolean</code> feature. <code>*BannerSheet</code> isthe feature name and the translation string <code>BannerSheet</code> is the text label that appears in theuser interface.</font></li><li>The keyword <code>*DefaultBannerSheet</code> specifiesthe required default value, which in this case is the boolean value <code>False</code>.</font></li><li>This line and the next are very important for a Boolean feature.A Boolean feature must define two, and only two options. One mustprovide the value <code>True</code>,and the other must provide the value <code>False</code>.Each option must supply the PostScript code to invoke the featureassociated with the option in the printer.</font></li><li>The <code>*OpenUI</code> keywordmust be paired with <code>*CloseUI</code> keyword.Don't forget to supply the main keyword for the feature name.</font></li><li>The keyword <code>*CloseGroup</code> specifiesthe end of a group. The string value <code>Finishing</code> indicatesit is the end of the <code>Finishing</code> features.</font></li></ol><p>The <i>PostScript Printer Description File Format Specification</i> documentcontains additional details on the syntax needed to specify groupsand options, as well as information on adding code that's invokedwhen an option is selected.</p><br><table border = "0" BGCOLOR="#E6E6E6"><tr><td><b>Note: </b>You'llneed to translate the group and feature names when you create localized versionsof the PPD file. See  <a href="Creating_a__ed_PPD_File.html#CJBEAJBI" target = "_right">"Creating a Localized PPD File"</a> for more information.</td></tr></table><br><br>    <br><a href="Creating_a__ed_PPD_File.html" target="_right"><img src="../images/previous.gif" border="0"></a><a href="Adding_PPD__operty_List.html" target="_right"><img src="../images/next.gif" border="0"></a>&nbsp;<br><hr><p><font face="Geneva,Helvetica,Arial" size="2">&#169; 2001 Apple Computer, Inc. (Last Updated August 24, 2001)</font></p><!-- start of footer --><!-- googleoff: index -->
+<!-- START INCLUDED FOOTER -->
+<!-- START FIND FEATURE -->
+<TABLE WIDTH="600" CELLPADDING="0" CELLSPACING="0" BORDER="0">
+	<TR>
+		<TD VALIGN=TOP ALIGN=CENTER>
+		<IMG WIDTH="600" SRC="http://a772.g.akamai.net/7/772/51/3aecfedc9747b7/www.apple.com/main/elements/singlegraypixel.gif" ALT="Gray line" HEIGHT="1" BORDER="0" ALIGN="TOP">
+		</TD>
+	</TR>
+
+					<TR ALIGN=CENTER VALIGN=MIDDLE>
+						<TD>
+						<br>
+			
+						<FONT SIZE="1" FACE="Geneva,Arial,Helvetica,Swiss,SunSans-Regular">
+						<A HREF="/contact/">Contact ADC</A>&nbsp;|&nbsp;
+						<A HREF="/sitemap/">ADC Site Map</A>&nbsp;|&nbsp;
+						<A HREF="/search/">ADC Advanced Search</A>
+						
+						</FONT>
+						</TD>
+					</tr>
+		<BR>
+<!-- END FIND FEATURE -->
+<!-- COPYRIGHT INFORMATION -->
+<tr ALIGN=CENTER VALIGN=MIDDLE>
+<td><FONT SIZE="1" FACE="Geneva,Arial,Helvetica,Swiss,SunSans-Regular">For information about Apple Products, please visit
+<A HREF="http://www.apple.com/">Apple.com</a>.</font>
+</td>
+</tr>
+<br><br>
+	<tr ALIGN=CENTER VALIGN=MIDDLE>
+		<td>
+		<FONT SIZE="1" FACE="Geneva,Arial,Helvetica,Swiss,SunSans-Regular">
+			<A HREF="http://www.apple.com/contact/">Contact Apple</A>&nbsp;|&nbsp;<A HREF="http://www.apple.com/legal/privacy/">Privacy Notice</A><BR>Copyright &copy; 2001 Apple Computer, Inc. 
+			<A HREF="http://www.apple.com/legal/">All rights reserved.</A><BR>1-800-MY-APPLE
+		</FONT>
+		
+		</TD>
+	</TR>
+</TABLE>
+</center>
+<br><br>
+<!-- END INCLUDED FOOTER -->
+<!-- googleon: index --><!-- end of footer --></body></html>
